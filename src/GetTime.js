@@ -1,6 +1,6 @@
 // @flow
 
-export default function getTime() {
+export default function GetTime() {
   let time: Date = new Date();
 
   return {

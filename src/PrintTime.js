@@ -1,8 +1,8 @@
 // @flow
 
-import getTime from "./GetTime";
+import GetTime from "./GetTime";
 
-let { hour, minute } = getTime();
+let { hour, minute } = GetTime();
 
 console.log(hour);
 console.log(minute);
