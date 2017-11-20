@@ -1,7 +1,6 @@
 // @flow
 
 function isEqual(a: Array<mixed>, b: Array<mixed>): boolean {
-  // TODO: compare stuff
   if (a.length != b.length) {
     return false;
   } else {
