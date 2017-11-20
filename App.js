@@ -1,24 +1,15 @@
 // @flow
 
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { Component } from "react";
+import { Text, View } from "react-native";
+import Styles from "./Styles";
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.box}>
-      <Text style={styles.text}>Hello world</Text>
+    <View style={Styles.box}>
+      <Text style={Styles.text}>Hello world</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  box: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  text: {
-    color: "#f00"
-  }
-});
+export default App;
