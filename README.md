@@ -1,5 +1,6 @@
 # React Native Training
 
+<<<<<<< HEAD
 Day 1 training branch, includes:
 
 * Data structures (arrays and objects)
@@ -13,3 +14,6 @@ Day 1 training branch, includes:
 * React stateless functional components
 * Layout intro: box model and flex
 * Task: Contact list with initial name placeholder for photo
+=======
+Repository for React Native Training
+>>>>>>> master
