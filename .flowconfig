@@ -1,6 +1,6 @@
 [ignore]
 ; We fork some components by platform
-.*/*[.]android.js
+; .*/*[.]android.js
 
 ; Ignore templates for 'react-native init'
 .*/local-cli/templates/.*
@@ -73,4 +73,4 @@ module.file_ext=.jsx
 module.file_ext=.json
 
 [version]
-^0.53.0
+^0.59.0

@@ -3,18 +3,15 @@
 import { StyleSheet } from "react-native";
 
 const Styles = StyleSheet.create({
-  container: {
-    marginTop: 20,
-    flex: 1
+  headerOuter: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#bbb",
+    paddingHorizontal: 10,
+    paddingVertical: 15
   },
-  content: {
-    flex: 1
-  },
+  headerInner: {},
   headerTitle: {
     fontSize: 30
-  },
-  buttonContainer: {
-    alignItems: "center"
   }
 });
 
