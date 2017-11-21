@@ -4,7 +4,8 @@ import { StyleSheet } from "react-native";
 
 const Styles = StyleSheet.create({
   container: {
-    marginTop: 20
+    marginTop: 20,
+    flex: 1
   },
   contact: {
     borderBottomWidth: 1,
@@ -35,6 +36,14 @@ const Styles = StyleSheet.create({
   contactName: {
     fontWeight: "bold",
     fontSize: 18
+  },
+  header: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#bbb",
+    padding: 10
+  },
+  headerTitle: {
+    fontSize: 30
   }
 });
 

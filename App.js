@@ -27,11 +27,17 @@ function Contact(props) {
 
 function App() {
   return (
-    <ScrollView style={Styles.container}>
-      {contacts.map((contact, index) => (
-        <Contact key={index} contact={contact} />
-      ))}
-    </ScrollView>
+    <View style={Styles.container}>
+      <View style={Styles.header}>
+        <Text style={Styles.headerTitle}>Contact List</Text>
+      </View>
+
+      <ScrollView>
+        {contacts.map((contact, index) => (
+          <Contact key={index} contact={contact} />
+        ))}
+      </ScrollView>
+    </View>
   );
 }
 
