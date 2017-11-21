@@ -10,13 +10,15 @@ let contacts: Array<Object> = [
 ];
 
 function Contact(props) {
+  let { contact } = props;
+
   return (
     <View style={Styles.contact}>
       <View style={Styles.contactPhoto}>
-        <Text style={Styles.contactPhotoAlias}>{props.contact.name[0]}</Text>
+        <Text style={Styles.contactPhotoAlias}>{contact.name[0]}</Text>
       </View>
       <View style={Styles.contactDetails}>
-        <Text style={Styles.contactName}>{props.contact.name}</Text>
+        <Text style={Styles.contactName}>{contact.name}</Text>
         <Text>{props.contact.phoneNumber}</Text>
       </View>
     </View>
