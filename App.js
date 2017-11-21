@@ -1,8 +1,9 @@
 // @flow
 
 import React, { Component } from "react";
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, Alert } from "react-native";
 import Styles from "./Styles";
+import Touchable from "./src/Touchable";
 
 let contacts: Array<Object> = [
   { name: "Abu", phoneNumber: "08123456789" },
@@ -11,17 +12,21 @@ let contacts: Array<Object> = [
 
 function Contact(props) {
   let { contact } = props;
+  let onPress = () =>
+    Alert.alert("Contact pressed", `${contact.name} : ${contact.phoneNumber}`);
 
   return (
-    <View style={Styles.contact}>
-      <View style={Styles.contactPhoto}>
-        <Text style={Styles.contactPhotoAlias}>{contact.name[0]}</Text>
+    <Touchable onPress={onPress}>
+      <View style={Styles.contact}>
+        <View style={Styles.contactPhoto}>
+          <Text style={Styles.contactPhotoAlias}>{contact.name[0]}</Text>
+        </View>
+        <View style={Styles.contactDetails}>
+          <Text style={Styles.contactName}>{contact.name}</Text>
+          <Text>{props.contact.phoneNumber}</Text>
+        </View>
       </View>
-      <View style={Styles.contactDetails}>
-        <Text style={Styles.contactName}>{contact.name}</Text>
-        <Text>{props.contact.phoneNumber}</Text>
-      </View>
-    </View>
+    </Touchable>
   );
 }
 
@@ -32,7 +37,7 @@ function App() {
         <Text style={Styles.headerTitle}>Contact List</Text>
       </View>
 
-      <ScrollView>
+      <ScrollView style={Styles.contactList}>
         {contacts.map((contact, index) => (
           <Contact key={index} contact={contact} />
         ))}

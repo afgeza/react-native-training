@@ -13,7 +13,8 @@ const Styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 10
+    padding: 10,
+    paddingLeft: 0
   },
   contactPhoto: {
     width: 60,
@@ -45,6 +46,9 @@ const Styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 30
+  },
+  contactList: {
+    paddingLeft: 15
   }
 });
 
