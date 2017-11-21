@@ -13,7 +13,7 @@ let contacts: Array<Object> = [
 function Contact(props) {
   let { contact } = props;
   let onPress = () =>
-    Alert.alert("Contact pressed", `${contact.name} : ${contact.phoneNumber}`);
+    Alert.alert("Contact pressed", `${contact.name}: ${contact.phoneNumber}`);
 
   return (
     <Touchable onPress={onPress}>
