@@ -5,17 +5,16 @@ import {
   Text,
   Button,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  TextInput
 } from "react-native";
-
-const USERNAME1 = "danielsukmana";
-const USERNAME2 = "sstur";
-const usernames = ["danielsukmana", "sstur", "afgeza"];
+import Styles from "./Styles.js";
 
 type Props = {};
 type State = {
   repositories: Array<string>,
-  isLoading: boolean
+  isLoading: boolean,
+  username: string
 };
 
 async function fetchRepositories(username: string) {
@@ -28,38 +27,44 @@ class RepoScene extends Component<Props, State> {
   constructor() {
     super(...arguments);
     this.state = {
-      repositories: []
+      repositories: [],
+      isLoading: false,
+      username: ""
     };
   }
 
   async fetchNow() {
+    let { username } = this.state;
+    this.setState({ isLoading: true });
+    let repoNames = await fetchRepositories(username);
     this.setState({
-      isLoading: true
-    });
-    let [listOne, listTwo, listThree] = await Promise.all(
-      usernames.map(username => {
-        return fetchRepositories(username);
-      })
-    );
-    this.setState({
-      repositories: [...listOne, ...listTwo, ...listThree],
+      repositories: [...repoNames],
       isLoading: false
     });
   }
 
   render() {
-    let repositories = this.state.repositories;
+    let { repositories, isLoading, username } = this.state;
     return (
-      <View style={{ backgroundColor: "#eee", padding: 20, flex: 1 }}>
+      <View style={{ flex: 1, padding: 10 }}>
+        <TextInput
+          style={Styles.textInput}
+          value={username}
+          onChangeText={username => {
+            this.setState({ username });
+          }}
+          onSubmitEditing={() => this.fetchNow()}
+          returnKeyType="search"
+        />
         <Text>Repositories:</Text>
         {repositories.length === 0 ? <Text>Nothing to display</Text> : null}
-        {this.state.isLoading === true ? (
-          <ActivityIndicator size="large" />
-        ) : null}
-        <ScrollView style={{ flex: 1 }}>
-          {repositories.map((repoName, i) => <Text key={i}>{repoName}</Text>)}
+        {isLoading === true ? <ActivityIndicator size="large" /> : null}
+        <ScrollView>
+          {repositories.map((repo, i) => {
+            console.log(repo);
+            return <Text key={i}>{repo}</Text>;
+          })}
         </ScrollView>
-        <Button title="Fetch Data" onPress={() => this.fetchNow()} />
       </View>
     );
   }
