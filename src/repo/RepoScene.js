@@ -1,4 +1,5 @@
 // @flow
+
 import React, { Component } from "react";
 import {
   View,
@@ -69,5 +70,4 @@ class RepoScene extends Component<Props, State> {
     );
   }
 }
-
 export default RepoScene;
