@@ -1,6 +1,6 @@
 [ignore]
 ; We fork some components by platform
-; .*/*[.]android.js
+.*/*[.]android.js
 
 ; Ignore templates for 'react-native init'
 .*/local-cli/templates/.*
@@ -66,11 +66,5 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 unsafe.enable_getters_and_setters=true
 
-module.file_ext=.ios.js
-module.file_ext=.android.js
-module.file_ext=.js
-module.file_ext=.jsx
-module.file_ext=.json
-
 [version]
-^0.59.0
+^0.53.0
