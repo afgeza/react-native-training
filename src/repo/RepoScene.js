@@ -1,53 +1,68 @@
 // @flow
-
 import React, { Component } from "react";
-import { Text, View, Button, Alert } from "react-native";
-import Styles from "./Styles";
+import {
+  View,
+  Text,
+  Button,
+  ScrollView,
+  ActivityIndicator
+} from "react-native";
+
+const USERNAME1 = "danielsukmana";
+const USERNAME2 = "sstur";
+const usernames = ["danielsukmana", "sstur", "afgeza"];
 
 type Props = {};
 type State = {
-  repos: Array<Repo>,
-  username: string
-};
-type Repo = {
-  name: string,
-  description: string
+  repositories: Array<string>,
+  isLoading: boolean
 };
 
-export default class RepoScene extends Component<Props, State> {
+async function fetchRepositories(username: string) {
+  let response = await fetch(`https://api.github.com/users/${username}/repos`);
+  let data = await response.json();
+  return data.map(repo => repo.name);
+}
+
+class RepoScene extends Component<Props, State> {
   constructor() {
-    super();
+    super(...arguments);
     this.state = {
-      repos: [],
-      username: "afgeza"
+      repositories: []
     };
   }
 
+  async fetchNow() {
+    this.setState({
+      isLoading: true
+    });
+    let [listOne, listTwo, listThree] = await Promise.all(
+      usernames.map(username => {
+        return fetchRepositories(username);
+      })
+    );
+    this.setState({
+      repositories: [...listOne, ...listTwo, ...listThree],
+      isLoading: false
+    });
+  }
+
   render() {
-    let username = this.state.username;
-
-    let fetchData = async () => {
-      let response = await fetch(
-        `https://api.github.com/users/${username}/repos`
-      );
-      let data = await response.json();
-      this.setState({
-        repos: data
-      });
-    };
-
+    let repositories = this.state.repositories;
     return (
-      <View style={Styles.container}>
-        {this.state.repos.map((repo, i) => {
-          return (
-            <Button
-              title={repo.name}
-              onPress={() => Alert.alert("Description", repo.description)}
-            />
-          );
-        })}
-        <Button style={Styles.fetchButton} title="Fetch" onPress={fetchData} />
+      <View style={{ backgroundColor: "#eee", padding: 20, flex: 1 }}>
+        <Text>Repositories:</Text>
+        {repositories.length === 0 ? <Text>Nothing to display</Text> : null}
+        {this.state.isLoading === true ? (
+          <ActivityIndicator size="large" />
+        ) : null}
+        <ScrollView style={{ flex: 1 }}>
+          {repositories.map((repoName, i) => <Text key={i}>{repoName}</Text>)}
+        </ScrollView>
+        <Button title="Fetch Data" onPress={() => this.fetchNow()} />
       </View>
     );
   }
 }
+
+export default RepoScene;
