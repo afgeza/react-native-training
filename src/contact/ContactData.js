@@ -1,6 +1,6 @@
 // @flow
 
-export type Contact = {
+type Contact = {
   name: string,
   phoneNumber: string
 };
@@ -10,4 +10,4 @@ const ContactData: Array<Contact> = [
   { name: "Bambang", phoneNumber: "08234567890" }
 ];
 
-export default ContactData;
+export { ContactData };

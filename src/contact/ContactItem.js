@@ -4,8 +4,11 @@ import React, { Component } from "react";
 import { Text, View, Alert } from "react-native";
 import Touchable from "../common/Touchable";
 import Styles from "./Styles";
-import { type Contact } from "./ContactData";
 
+type Contact = {
+  name: string,
+  phoneNumber: string
+};
 type Props = {
   contact: Contact
 };

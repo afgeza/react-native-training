@@ -3,7 +3,7 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import Styles from "./Styles";
-import ContactData from "./ContactData";
+import { ContactData } from "./ContactData";
 import ContactItem from "./ContactItem";
 
 export default function ContactScene() {

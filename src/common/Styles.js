@@ -7,7 +7,8 @@ const Styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#bbb",
     paddingHorizontal: 10,
-    paddingVertical: 15
+    paddingVertical: 15,
+    backgroundColor: "#fff"
   },
   headerInner: {},
   headerTitle: {
